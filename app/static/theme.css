@@ -1,0 +1,16 @@
+/* 计划占用 · 豁免窗 */
+:root {
+  color-scheme: dark;
+  --bg: #0d1421; --rail: #182844; --accent: #74a8fe; --ink: #e7edf9;
+  --panel: color-mix(in srgb, var(--bg) 91%, white);
+  --line: color-mix(in srgb, var(--ink) 24%, var(--bg));
+  --mute: color-mix(in srgb, var(--ink) 78%, var(--bg));
+  --th: color-mix(in srgb, var(--panel) 84%, var(--accent));
+  --rail-ink: #f2f0e9;
+  --primary: #151919;
+  --bad: #ffb9bd;
+  --ui: Menlo, monospace; --mono: ui-monospace, Menlo, monospace;
+  --pad: 12px; --row: 29px; --gap: 10px;
+  --figure: 24px; --title: 36px; --graph: 48px;
+  --scroll: 315px;
+}
