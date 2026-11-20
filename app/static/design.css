@@ -91,3 +91,15 @@ td,th { height:var(--row); padding:4px 6px; vertical-align:top; overflow-wrap:an
 .readout span { height:auto; width:auto; padding:0; background:none; border:0; border-radius:0; aspect-ratio:auto; color:var(--mute); font:11px var(--mono); text-align:right; }
 .readout { justify-content:flex-end; height:auto; min-height:25px; transform:none; border:0; background:none; }
 .readout span:empty { display:none; }
+
+.settlement { display: grid; gap: 12px; padding: 12px; }
+.settle-section { border: 1px solid #435879; background: var(--panel); padding: 10px 12px; }
+.settle-section h3 { margin: 0 0 8px; font-size: 13px; font-family: var(--mono); color: var(--accent); }
+.settle-meta { display: flex; flex-wrap: wrap; gap: 14px; margin: 0 0 6px; font-family: var(--mono); color: var(--mute); }
+.settle-section label { display: block; margin: 6px 0 3px; color: var(--mute); }
+.settle-section textarea { width: 100%; min-height: 64px; background: #0d1728; color: var(--ink); border: 1px solid #344b70; }
+.settle-section input[type=file] { margin-bottom: 6px; }
+.settle-actions { display: flex; flex-wrap: wrap; gap: 5px; align-items: flex-start; }
+.settle-actions textarea { width: 150px; min-height: 42px; }
+.settlement .btn { margin: 4px 6px 4px 0; }
+.mute { color: var(--mute); font-size: 12px; }

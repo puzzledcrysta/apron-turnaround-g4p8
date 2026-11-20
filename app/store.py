@@ -13,6 +13,23 @@ CREATE TABLE IF NOT EXISTS reviews (
   decision TEXT NOT NULL, note TEXT NOT NULL, changed TEXT NOT NULL,
   PRIMARY KEY(run_id,version)
 );
+CREATE TABLE IF NOT EXISTS settlements (
+  id TEXT PRIMARY KEY, base_run_id TEXT NOT NULL REFERENCES runs(id),
+  status TEXT NOT NULL, created TEXT NOT NULL, closed TEXT
+);
+CREATE TABLE IF NOT EXISTS adjustments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, settlement_id TEXT NOT NULL REFERENCES settlements(id),
+  key TEXT NOT NULL, base_revision INTEGER NOT NULL, candidate_revision INTEGER NOT NULL,
+  candidate_run_id TEXT NOT NULL REFERENCES runs(id), status TEXT NOT NULL,
+  base_amount TEXT, new_amount TEXT NOT NULL, minute_delta TEXT NOT NULL,
+  book_amount TEXT, book_delta TEXT, base_line INTEGER, new_line INTEGER,
+  kind TEXT NOT NULL, note TEXT NOT NULL DEFAULT '', changed TEXT NOT NULL,
+  UNIQUE(settlement_id,key,candidate_revision)
+);
+CREATE TABLE IF NOT EXISTS settlement_versions (
+  settlement_id TEXT NOT NULL REFERENCES settlements(id), version INTEGER NOT NULL,
+  snapshot TEXT NOT NULL, created TEXT NOT NULL, PRIMARY KEY(settlement_id,version)
+);
 """
 
 

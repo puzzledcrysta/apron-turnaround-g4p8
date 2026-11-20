@@ -1,5 +1,6 @@
 import {query, readInput, encodeInput} from './api.js';
 import {el, evidence, table} from './table.js';
+import {renderSettlement} from './settlement.js';
 
 const byId = id => document.getElementById(id);
 const settings = JSON.parse(byId('settings').textContent);
@@ -88,12 +89,22 @@ async function render() {
   const stage = selected;
   byId('phase').textContent = settings.tabs[stage];
   byId('review').hidden = true;
+  const settlementPanel = byId('settlement-panel');
+  settlementPanel.hidden = true;
+  body.hidden = false;
   for (const link of links) {
     if (link.dataset.module === stage) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   }
   if (!result) return;
   const id = result.manifest.run_id;
+  if (stage === 'settlement') {
+    body.hidden = true;
+    try {
+      await renderSettlement(settlementPanel, id, notice);
+    } catch (error) { notice(error.message, true); }
+    return;
+  }
   const raw = row => evidence('来源字段', row.raw);
   const key = ['业务键', 'key'];
   const line = ['行号', 'line', 'num'];

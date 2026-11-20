@@ -50,6 +50,15 @@ class Review(BaseModel):
     note: str = Field(default='',max_length=500)
 
 
+class SettlementCreate(BaseModel):
+    base_run_id: str = Field(min_length=1,max_length=128)
+
+
+class AdjustmentDecision(BaseModel):
+    decision: Literal['纳入','留待下期']
+    note: str = Field(default='',max_length=500)
+
+
 def read_sample(name):
     choices = {'shift':'shift.csv','external':'external.csv'}
     if name not in choices:

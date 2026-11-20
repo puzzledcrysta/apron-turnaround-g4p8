@@ -9,4 +9,8 @@ REASONS = {
     'AMOUNT_DELTA': '复算与外部账计量不同', 'BOOK_CONFLICT': '独立账含重复业务键',
     'RUN_UNKNOWN': '没有此批次', 'DEMO_UNKNOWN': '没有此样例', 'STALE': '复核版本已过期',
     'REVIEW_NOTE': '有差异时须填写复核意见', 'REVIEW_DECISION': '复核结论无效',
+    'BASE_NOT_CONFIRMED': '原批次尚未确认', 'SETTLEMENT_UNKNOWN': '没有此关账单',
+    'SETTLEMENT_CLOSED': '关账单已封账', 'ADJUST_CONFLICT': '同一修订重算结果冲突',
+    'ADJUST_UNKNOWN': '没有此调整记录', 'VERSION_UNKNOWN': '没有此结算版本',
+    'PENDING_ADJUSTMENTS': '仍有调整未确认', 'NO_SETTLEMENT': '尚未生成结算结果',
 }

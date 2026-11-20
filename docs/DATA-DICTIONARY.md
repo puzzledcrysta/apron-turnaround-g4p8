@@ -23,3 +23,17 @@
 影子版本与重复行保留原始字段。复核按版本追加，旧版本提交返回 409。
 
 导入原文件时指纹取源字节，编辑预览后以提交的 UTF-8 文本计算。
+
+## 关账调整记录
+
+| 表/字段 | 定义 |
+|---|---|
+| `settlements` | 关账单。挂接一个已确认的原批次 `base_run_id`，状态 `open`/`closed` |
+| `adjustments` | 晚到修订调整。唯一键 `(settlement_id,key,candidate_revision)` 保证同修订重跑不累计 |
+| `adjustments.status` | `pending` 待确认 / `included` 纳入本次 / `deferred` 留待下期 / `superseded` 被更高修订取代 |
+| `base_amount`/`new_amount` | 原确认账单与候选批次的计费分钟；新增保障单的原值为空 |
+| `minute_delta` | 新计费分钟减原计费分钟 |
+| `book_amount`/`book_delta` | 外部账参照值与纳入后外部差；外部账缺键时为空 |
+| `settlement_versions` | 结算结果版本快照。仅含 `included` 调整，未确认调整不进入快照 |
+
+调整记录同时携带 `book_delta_before`/`book_delta_after`/`book_delta_shift` 视图，供复核工作台展示外部账差异的前后变化。封账后正式结果固定为最新版本快照。
